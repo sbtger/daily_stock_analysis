@@ -32,6 +32,18 @@ const NAV_ITEMS: NavItem[] = [
   { key: 'settings', label: '设置', to: '/settings', icon: Settings2 },
 ];
 
+const BrandMoon: React.FC = () => (
+  <div className="brand-moon" aria-hidden="true">
+    <div className="brand-moon__surface">
+      <span className="brand-moon__crater brand-moon__crater--large" />
+      <span className="brand-moon__crater brand-moon__crater--mid" />
+      <span className="brand-moon__crater brand-moon__crater--small" />
+      <span className="brand-moon__ridge brand-moon__ridge--one" />
+      <span className="brand-moon__ridge brand-moon__ridge--two" />
+    </div>
+  </div>
+);
+
 export const SidebarNav: React.FC<SidebarNavProps> = ({ collapsed = false, onNavigate }) => {
   const { authEnabled, logout } = useAuth();
   const completionBadge = useAgentChatStore((state) => state.completionBadge);
@@ -40,9 +52,7 @@ export const SidebarNav: React.FC<SidebarNavProps> = ({ collapsed = false, onNav
   return (
     <div className="flex h-full flex-col">
       <div className={cn('mb-4 flex items-center gap-2 px-1', collapsed ? 'justify-center' : '')}>
-        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary-gradient text-[hsl(var(--primary-foreground))] shadow-[0_12px_28px_var(--nav-brand-shadow)]">
-          <BarChart3 className="h-5 w-5" />
-        </div>
+        <BrandMoon />
         {!collapsed ? (
           <p className="min-w-0 truncate text-sm font-semibold text-foreground">DSA</p>
         ) : null}
